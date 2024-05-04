@@ -15,9 +15,12 @@ public class Main {
             scanner.close();
         } catch (NoSuchElementException | IllegalArgumentException e) {
             throw new RuntimeException();
+        } catch (RuntimeException e) {
+            System.out.println("Unknown error");
+            throw e;
         }
 
-        try (FileWriter fileWriter = new FileWriter("info.txt", true)){
+        try (FileWriter fileWriter = new FileWriter("info.txt", true)) {
             fileWriter.append(line).append("\n");
         } catch (IOException e) {
             throw new RuntimeException(e);
